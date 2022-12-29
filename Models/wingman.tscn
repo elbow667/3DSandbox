@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" uid="uid://dvbcidj15t5k5" path="res://Models/wingman/scene.gltf" id="1_qf2up"]
+
+[node name="Wingman" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836325, 0, 0)
+
+[node name="scene" parent="." instance=ExtResource("1_qf2up")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.827119, -1.19209e-07, 0.282597)

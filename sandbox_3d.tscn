@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://kiyv56itrp3x"]
+
+[ext_resource type="PackedScene" uid="uid://cbkrynifg5q78" path="res://Models/guard_tower_free_asset/scene.gltf" id="2_5dgjb"]
+[ext_resource type="PackedScene" uid="uid://dpm53cgjorw5g" path="res://Characters/player.tscn" id="2_x5kpf"]
+[ext_resource type="PackedScene" uid="uid://6on3ohmgtwjd" path="res://campbells.tscn" id="3_kd6by"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyo1c"]
+sky_top_color = Color(0.968627, 0.741176, 0.862745, 1)
+sky_horizon_color = Color(0.992157, 0.54902, 0.784314, 1)
+sky_curve = 0.369343
+sky_energy_multiplier = 0.5
+sky_cover_modulate = Color(0.384314, 0.454902, 0.54902, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sun_angle_max = 60.0
+sun_curve = 0.204906
+
+[sub_resource type="Sky" id="Sky_5e0w3"]
+sky_material = SubResource("ProceduralSkyMaterial_jyo1c")
+
+[sub_resource type="Environment" id="Environment_tm446"]
+background_mode = 2
+sky = SubResource("Sky_5e0w3")
+ambient_light_source = 3
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_sun_scatter = 0.09
+fog_density = 0.002
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lx454"]
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ykw4p"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="Sandbox3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tm446")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.840612, -0.469073, 0.270818, 0, 0.499998, 0.866026, -0.541638, 0.727992, -0.420304, 0, 10.3968, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_lx454")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ykw4p")
+
+[node name="Player" parent="." instance=ExtResource("2_x5kpf")]
+
+[node name="scene" parent="." instance=ExtResource("2_5dgjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14411, 0, 0)
+
+[node name="Campbells" parent="." instance=ExtResource("3_kd6by")]
+transform = Transform3D(-0.804156, 0, 0.00668907, 0, 0.825454, 0, -0.00776161, 0, -0.693034, 0, 0.633085, -39.3632)

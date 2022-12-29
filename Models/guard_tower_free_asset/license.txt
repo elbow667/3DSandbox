@@ -1,0 +1,11 @@
+Model Information:
+* title:	Guard Tower [Free Asset]
+* source:	https://sketchfab.com/3d-models/guard-tower-free-asset-963071f5fe404970a40b166bcee430b8
+* author:	Lex713 (https://sketchfab.com/LunarEclips3)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Guard Tower [Free Asset]" (https://sketchfab.com/3d-models/guard-tower-free-asset-963071f5fe404970a40b166bcee430b8) by Lex713 (https://sketchfab.com/LunarEclips3) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
