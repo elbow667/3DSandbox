@@ -1,17 +1,17 @@
 extends CharacterBody3D
 
-@export var JUMP_VELOCITY = 6.5
-@export var SPEED = 10.0
-@export var LERP_VAL = .15
-var flying = false
+@export var SPEED := 5.0
+@export var JUMP_VELOCITY := 4.5
+@export var LERP_VAL := .15
+
+@onready var flying : bool = false
 
 @onready var spring_arm_pivot = $SpringArmPivot
 @onready var spring_arm = $SpringArmPivot/SpringArm3D
 
-
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+#var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export var gravity = 9.8
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -29,18 +29,27 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor() and !flying:
 		velocity.y -= gravity * delta
+
 # Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
 # Handle Fly
+	
 	if Input.is_action_pressed("fly"):
-		flying = true
 		velocity.y = lerp(velocity.y, SPEED, LERP_VAL)
-	else: # stop climbing if released key
-		velocity.y = lerp(velocity.y, 0.0, LERP_VAL)
+		if not is_on_floor():
+			flying = true
+	elif Input.is_action_pressed("land"):
+		velocity.y = lerp(velocity.y, -SPEED, LERP_VAL)
+	elif velocity.y >= 0.0: # Check if velocity.y is positive
+			velocity.y = lerp(velocity.y, 0.0, LERP_VAL)
 	if Input.is_action_just_pressed("fly_toggle"):
 		flying = not flying
+	if is_on_floor() and flying:
+			flying = false
+			print("Just Landed")
+		
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
