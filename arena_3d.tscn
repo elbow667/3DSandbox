@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0wk8leqmxdfr"]
+
+[ext_resource type="PackedScene" uid="uid://bmeuo4dfeppwk" path="res://arena.tscn" id="1_24tmq"]
+[ext_resource type="PackedScene" uid="uid://dpm53cgjorw5g" path="res://Characters/player.tscn" id="2_2wn0j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fhyvn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_oun2a"]
+sky_material = SubResource("ProceduralSkyMaterial_fhyvn")
+
+[sub_resource type="Environment" id="Environment_ppoku"]
+background_mode = 2
+sky = SubResource("Sky_oun2a")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ppoku")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="arena" parent="." instance=ExtResource("1_24tmq")]
+
+[node name="Player" parent="." instance=ExtResource("2_2wn0j")]
+JUMP_VELOCITY = 50.0
