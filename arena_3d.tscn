@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0wk8leqmxdfr"]
 
 [ext_resource type="PackedScene" uid="uid://bmeuo4dfeppwk" path="res://arena.tscn" id="1_24tmq"]
-[ext_resource type="PackedScene" uid="uid://dpm53cgjorw5g" path="res://Characters/player.tscn" id="2_2wn0j"]
+[ext_resource type="PackedScene" uid="uid://wq72wb3nuuyr" path="res://Characters/player.tscn" id="2_2wn0j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fhyvn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,4 +28,3 @@ shadow_enabled = true
 [node name="arena" parent="." instance=ExtResource("1_24tmq")]
 
 [node name="Player" parent="." instance=ExtResource("2_2wn0j")]
-JUMP_VELOCITY = 50.0

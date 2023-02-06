@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmeuo4dfeppwk"]
+[gd_scene load_steps=5 format=3 uid="uid://bmeuo4dfeppwk"]
 
 [ext_resource type="PackedScene" uid="uid://clwgtxxthifqj" path="res://arena.blend" id="1_dd404"]
-[ext_resource type="Texture2D" uid="uid://ccyb72sd13j5l" path="res://addons/kenney_prototype_textures/dark/texture_09.png" id="2_wjo0l"]
+[ext_resource type="Texture2D" uid="uid://co2ox80bues5l" path="res://addons/kenney_prototype_textures/green/texture_10.png" id="2_q3qca"]
+[ext_resource type="PackedScene" uid="uid://ds80j4i5jduk8" path="res://cylinder_2.tscn" id="3_qqykq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiltu"]
-albedo_texture = ExtResource("2_wjo0l")
+albedo_color = Color(1, 0.619608, 1, 1)
+albedo_texture = ExtResource("2_q3qca")
 uv1_triplanar = true
 
 [node name="arena" instance=ExtResource("1_dd404")]
 
 [node name="Plane" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jiltu")
+
+[node name="cylinder2" parent="." index="1" instance=ExtResource("3_qqykq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)

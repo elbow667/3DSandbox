@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpm53cgjorw5g"]
+[gd_scene load_steps=5 format=3 uid="uid://wq72wb3nuuyr"]
 
-[ext_resource type="Script" path="res://Characters/player_script.gd" id="1_82xwq"]
+[ext_resource type="Script" path="res://Characters/player_script.gd" id="1_jhjt0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eowa1"]
 radius = 0.37
@@ -14,7 +14,8 @@ radius = 0.37
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_82xwq")
+script = ExtResource("1_jhjt0")
+JUMP_VELOCITY = 5.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_eowa1")

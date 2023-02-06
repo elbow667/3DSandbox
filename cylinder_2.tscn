@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds80j4i5jduk8"]
+
+[ext_resource type="PackedScene" uid="uid://cf1bwbpsx32n3" path="res://cylinder2.blend" id="1_7gw7n"]
+[ext_resource type="Texture2D" uid="uid://cvxe7tcs8hfka" path="res://addons/kenney_prototype_textures/orange/texture_10.png" id="2_ggovf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j60mx"]
+albedo_texture = ExtResource("2_ggovf")
+uv1_triplanar = true
+
+[node name="cylinder2" instance=ExtResource("1_7gw7n")]
+
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j60mx")
