@@ -14,6 +14,7 @@ sky_material = SubResource("ProceduralSkyMaterial_fhyvn")
 background_mode = 2
 sky = SubResource("Sky_oun2a")
 tonemap_mode = 2
+sdfgi_enabled = true
 glow_enabled = true
 
 [node name="Node" type="Node"]

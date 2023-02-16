@@ -16,9 +16,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("quit"):
+		$PauseMenu.pause()
+#		get_tree().quit()
+
 	if event is InputEventMouseMotion:
 		spring_arm_pivot.rotate_y(-event.relative.x * .005)
 		spring_arm.rotate_x(-event.relative.y * .005)

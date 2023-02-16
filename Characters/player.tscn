@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://wq72wb3nuuyr"]
+[gd_scene load_steps=6 format=3 uid="uid://wq72wb3nuuyr"]
 
 [ext_resource type="Script" path="res://Characters/player_script.gd" id="1_jhjt0"]
+[ext_resource type="PackedScene" uid="uid://y5rdei5vxey7" path="res://pause_menu.tscn" id="2_l1ws7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eowa1"]
 radius = 0.37
@@ -33,3 +34,5 @@ spring_length = 3.0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_l1ws7")]

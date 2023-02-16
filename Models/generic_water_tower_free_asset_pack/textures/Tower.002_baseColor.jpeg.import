@@ -4,23 +4,22 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs4t5f0eeklto"
 path.s3tc="res://.godot/imported/Tower.002_baseColor.jpeg-243670fa62663619b23d312e21ac918f.s3tc.ctex"
-path.etc2="res://.godot/imported/Tower.002_baseColor.jpeg-243670fa62663619b23d312e21ac918f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Models/generic_water_tower_free_asset_pack/textures/Tower.002_baseColor.jpeg"
-dest_files=["res://.godot/imported/Tower.002_baseColor.jpeg-243670fa62663619b23d312e21ac918f.s3tc.ctex", "res://.godot/imported/Tower.002_baseColor.jpeg-243670fa62663619b23d312e21ac918f.etc2.ctex"]
+dest_files=["res://.godot/imported/Tower.002_baseColor.jpeg-243670fa62663619b23d312e21ac918f.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
