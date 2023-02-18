@@ -7,6 +7,7 @@ var SPEED
 @export var JUMP_VELOCITY = 4.5
 @export var LERP_VAL := .15
 
+@onready var pause_menu = $PauseMenu
 @onready var spring_arm_pivot = $SpringArmPivot
 @onready var spring_arm = $SpringArmPivot/SpringArm3D
 @onready var bullet = preload("res://bullet.tscn")
@@ -17,9 +18,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("quit"):
-		$PauseMenu.pause()
-#		get_tree().quit()
+#	if event.is_action_pressed("quit"):
+#		pause_menu.pause()
+#		
 
 	if event is InputEventMouseMotion:
 		spring_arm_pivot.rotate_y(-event.relative.x * .005)
