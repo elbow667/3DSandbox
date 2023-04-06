@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://baky1k331bxwf" path="res://Textures/forest_ground_04_1k/textures/forest_ground_04_diff_1k.png" id="1_wnlu2"]
 [ext_resource type="PackedScene" uid="uid://cbkrynifg5q78" path="res://Models/guard_tower_free_asset/scene.gltf" id="2_5dgjb"]
 [ext_resource type="Texture2D" uid="uid://b3pvdko341cb1" path="res://Textures/forest_ground_04_1k/textures/forest_ground_04_nor_gl_1k.png" id="2_ei102"]
-[ext_resource type="PackedScene" uid="uid://dpm53cgjorw5g" path="res://Characters/player.tscn" id="2_x5kpf"]
+[ext_resource type="PackedScene" uid="uid://wq72wb3nuuyr" path="res://Characters/player.tscn" id="2_x5kpf"]
 [ext_resource type="Texture2D" uid="uid://b2e5dtkuj3a11" path="res://Textures/forest_ground_04_1k/textures/forest_ground_04_rough_1k.png" id="3_4n8yq"]
 [ext_resource type="PackedScene" uid="uid://6on3ohmgtwjd" path="res://campbells.tscn" id="3_kd6by"]
 
