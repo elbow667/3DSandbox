@@ -33,6 +33,9 @@ func _physics_process(delta):
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
 	apply_movement(input_vector, direction, delta)
+	apply_friction(direction,delta)
+	apply_gravity(delta)
+	jump()
 	move_and_slide()
 	
 	
@@ -50,8 +53,25 @@ func apply_movement(input_vector, direction, delta):
 	if direction != Vector3.ZERO:
 		velocity.x = velocity.move_toward(direction * max_speed, acceleration * delta).x
 		velocity.z = velocity.move_toward(direction * max_speed, acceleration * delta).z
+
+func apply_friction(direction, delta):
+	if direction == Vector3.ZERO:
+		if is_on_floor():
+			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+		else:
+			velocity.x = velocity.move_toward(direction * max_speed, air_friction * delta).x
+			velocity.z = velocity.move_toward(direction * max_speed, air_friction * delta).z
 	
-	
-	
+func apply_gravity(delta):
+	velocity.y += gravity * delta
+	velocity.y = clamp(velocity.y,gravity, jump_impulse)
+
+func jump():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_impulse
+	if Input.is_action_just_released("jump") and velocity.y > jump_impulse / 2:
+		velocity.y = jump_impulse / 2
+		
+		
 
 
