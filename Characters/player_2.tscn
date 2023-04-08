@@ -22,13 +22,17 @@ height = 2.25
 [node name="Player2" type="CharacterBody3D"]
 script = ExtResource("1_u3rt5")
 
-[node name="Skin" type="MeshInstance3D" parent="."]
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Skin" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_l5nxe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51375, -0.58086)
 mesh = SubResource("BoxMesh_xyf4p")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983466, 0)
