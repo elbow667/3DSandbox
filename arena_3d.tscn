@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2u50jebnxbg4"]
+[gd_scene load_steps=10 format=3 uid="uid://c2u50jebnxbg4"]
 
 [ext_resource type="PackedScene" uid="uid://bmeuo4dfeppwk" path="res://arena.tscn" id="1_hbv4s"]
 [ext_resource type="Script" path="res://arena_3d.gd" id="1_sffkf"]
+[ext_resource type="Script" path="res://mesh_visible.gd" id="3_wnx6n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fhyvn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,7 +18,15 @@ tonemap_mode = 2
 sdfgi_enabled = true
 glow_enabled = true
 
-[sub_resource type="PrismMesh" id="PrismMesh_3y75b"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_137mw"]
+albedo_color = Color(0.152941, 0.345098, 1, 0.14902)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qkk2"]
+material = SubResource("StandardMaterial3D_137mw")
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qgea"]
+size = Vector3(100, 100, 100)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_sffkf")
@@ -35,4 +44,12 @@ shadow_enabled = true
 transform = Transform3D(-0.643082, 0, -0.765798, 0, 1, 0, 0.765798, 0, -0.643082, -8.411, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnPoint"]
-mesh = SubResource("PrismMesh_3y75b")
+mesh = SubResource("BoxMesh_4qkk2")
+script = ExtResource("3_wnx6n")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8qgea")
+
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
