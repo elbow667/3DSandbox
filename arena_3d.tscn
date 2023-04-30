@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2u50jebnxbg4"]
+[gd_scene load_steps=11 format=3 uid="uid://c2u50jebnxbg4"]
 
 [ext_resource type="PackedScene" uid="uid://bmeuo4dfeppwk" path="res://arena.tscn" id="1_hbv4s"]
 [ext_resource type="Script" path="res://arena_3d.gd" id="1_sffkf"]
 [ext_resource type="Script" path="res://mesh_visible.gd" id="3_wnx6n"]
+[ext_resource type="PackedScene" uid="uid://227h2vvr2aj7" path="res://baddy.tscn" id="4_mtjbj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fhyvn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -51,5 +52,8 @@ script = ExtResource("3_wnx6n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_8qgea")
+
+[node name="Baddy" parent="." instance=ExtResource("4_mtjbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00827, 1.08069, -6.91749)
 
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

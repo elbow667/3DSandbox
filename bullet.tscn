@@ -16,11 +16,14 @@ height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jnmy5"]
 radius = 0.06
-height = 0.21
+height = 0.12
 
 [node name="Bullet" type="RigidBody3D"]
+transform = Transform3D(0.000157074, 0, -1, 0, 1, 0, 1, 0, 0.000157074, 0, 0, 0)
 collision_layer = 0
+mass = 0.12
 gravity_scale = 0.0
+can_sleep = false
 script = ExtResource("1_hoh4f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -38,4 +41,9 @@ collision_layer = 0
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_jnmy5")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

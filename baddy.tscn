@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://227h2vvr2aj7"]
+
+[ext_resource type="Script" path="res://Baddy.gd" id="1_rbnhx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xjjsd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moq0k"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i3trj"]
+material = SubResource("StandardMaterial3D_moq0k")
+
+[node name="Baddy" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_rbnhx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xjjsd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_i3trj")

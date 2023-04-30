@@ -13,10 +13,21 @@ extends CharacterBody3D
 var snap_vector : = Vector3.ZERO
 @onready var spring_arm : = $SpringArm3D
 @onready var pivot : = $Pivot
+@onready var bullet: = preload("res://bullet.tscn")
+@onready var muzzle: = $Pivot/Gun/Muzzle
+@onready var aimcast: = $Pivot/Gun/Muzzle/AimCast
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func shoot_gun():
+		if Input.is_action_just_pressed("click"):
+			if aimcast.is_colliding():
+				var b = bullet.instantiate()
+				muzzle.add_child(b)
+				b.look_at(aimcast.get_collision_point(), Vector3.UP)
+				b.shoot = true
+				
 func _unhandled_input(event):
 	if event.is_action_pressed("click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,9 +49,11 @@ func _physics_process(delta):
 	apply_friction(direction,delta)
 	apply_gravity(delta)
 	jump()
+	shoot_gun()
 	move_and_slide()
 	
-	
+
+		
 func get_input_vector():
 	var input_vector = Vector3.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
