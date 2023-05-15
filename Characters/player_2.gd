@@ -27,6 +27,7 @@ func shoot_gun():
 				muzzle.add_child(b)
 				b.look_at(aimcast.get_collision_point(), Vector3.UP)
 				b.shoot = true
+				SoundPlayer.play_sound(SoundPlayer.SHOT)
 				
 func _unhandled_input(event):
 	if event.is_action_pressed("click"):
