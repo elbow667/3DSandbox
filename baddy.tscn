@@ -3,12 +3,14 @@
 [ext_resource type="Script" path="res://Baddy.gd" id="1_rbnhx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xjjsd"]
+height = 2.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moq0k"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i3trj"]
 material = SubResource("StandardMaterial3D_moq0k")
+height = 2.25
 
 [node name="Baddy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_rbnhx")

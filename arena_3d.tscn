@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2u50jebnxbg4"]
+[gd_scene load_steps=13 format=3 uid="uid://c2u50jebnxbg4"]
 
 [ext_resource type="PackedScene" uid="uid://bmeuo4dfeppwk" path="res://arena.tscn" id="1_hbv4s"]
 [ext_resource type="Script" path="res://arena_3d.gd" id="1_sffkf"]
 [ext_resource type="Script" path="res://mesh_visible.gd" id="3_wnx6n"]
 [ext_resource type="PackedScene" uid="uid://227h2vvr2aj7" path="res://baddy.tscn" id="4_mtjbj"]
+[ext_resource type="PackedScene" uid="uid://ddxlysiqmin7s" path="res://watch_tower.tscn" id="8_3c4wv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fhyvn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,7 +17,6 @@ sky_material = SubResource("ProceduralSkyMaterial_fhyvn")
 background_mode = 2
 sky = SubResource("Sky_oun2a")
 tonemap_mode = 2
-sdfgi_enabled = true
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_137mw"]
@@ -28,6 +28,8 @@ size = Vector3(1, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qgea"]
 size = Vector3(100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_356y0"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_sffkf")
@@ -45,6 +47,15 @@ shadow_enabled = true
 transform = Transform3D(-0.643082, 0, -0.765798, 0, 1, 0, 0.765798, 0, -0.643082, -8.411, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnPoint"]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_4qkk2")
+script = ExtResource("3_wnx6n")
+
+[node name="TeleportPoint" type="Node3D" parent="."]
+transform = Transform3D(-0.643082, 0, -0.765798, 0, 1, 0, 0.765798, 0, -0.643082, 24.9174, 18.6192, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TeleportPoint"]
+cast_shadow = 0
 mesh = SubResource("BoxMesh_4qkk2")
 script = ExtResource("3_wnx6n")
 
@@ -54,9 +65,22 @@ script = ExtResource("3_wnx6n")
 shape = SubResource("BoxShape3D_8qgea")
 
 [node name="Baddy" parent="." instance=ExtResource("4_mtjbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00827, 1.08069, -6.91749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00827, 1.10981, -6.91749)
 
 [node name="Baddy2" parent="." instance=ExtResource("4_mtjbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07387, 2.9216, 20.9733)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07387, 3.0706, 20.9733)
+
+[node name="Baddy3" parent="." instance=ExtResource("4_mtjbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1377, 19.5381, 7.22304)
+
+[node name="watch_tower" parent="." instance=ExtResource("8_3c4wv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.9276, 20.4387, 0)
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07003, 4.55835, 6.15837)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_356y0")
 
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
